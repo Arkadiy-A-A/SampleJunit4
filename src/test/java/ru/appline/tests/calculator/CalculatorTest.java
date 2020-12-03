@@ -5,9 +5,10 @@ import org.junit.Test;
 import ru.appline.framework.Calculator;
 import ru.appline.tests.base.BaseTests;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class CalculatorTest extends BaseTests {
 
@@ -17,8 +18,19 @@ public class CalculatorTest extends BaseTests {
     @Ignore("Всегда прописываем комментарий почему игнорим")
     public void testSum() throws InterruptedException {
         System.out.println("@Test -> testSum()");
-        assertEquals(6, calculator.sum(3, 3));
-        assertThat(calculator.sum(3, 3), is(5));
+        assertEquals(new Object(), calculator.sum(3, 3));
+        assertThat(calculator.sum(3, 3), equalTo(5));
+        assertThat("hello world", anyOf(
+                is("hello world"),
+                containsString("hello")
+        ));
+
+
+        String a1 = "new Object()";
+        String a2 = a1;
+        String a3 = new String("new Object()");
+        assertSame(a1, a2); // ok
+        assertSame(a1, a3); // AssertionError: expected:<test2.A@7f13d6e> but was:<test2.A@51cdd8a>
     }
 
     @Test

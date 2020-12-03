@@ -52,7 +52,7 @@ public class RuleTest extends BaseTests {
      * Без Rule правила
      */
     @Test
-    public void shouldTestExceptionMessage2() throws IndexOutOfBoundsException {
+    public void shouldTestExceptionMessage2() {
         List<String> list = new ArrayList<>();
         ThrowingRunnable th = () -> list.get(0);
         IndexOutOfBoundsException indexOutOfBoundsException = Assert.assertThrows(IndexOutOfBoundsException.class, th);
