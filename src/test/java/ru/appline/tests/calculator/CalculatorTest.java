@@ -18,7 +18,7 @@ public class CalculatorTest extends BaseTests {
     @Ignore("Всегда прописываем комментарий почему игнорим")
     public void testSum() throws InterruptedException {
         System.out.println("@Test -> testSum()");
-        assertEquals(new Object(), calculator.sum(3, 3));
+        assertEquals(5, calculator.sum(3, 3));
         assertThat(calculator.sum(3, 3), equalTo(5));
         assertThat("hello world", anyOf(
                 is("hello world"),

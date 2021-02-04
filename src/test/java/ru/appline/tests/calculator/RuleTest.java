@@ -7,7 +7,6 @@ import org.junit.function.ThrowingRunnable;
 import org.junit.rules.ExpectedException;
 import org.junit.rules.TestRule;
 import org.junit.rules.Timeout;
-import org.openqa.selenium.NoSuchElementException;
 import ru.appline.framework.Calculator;
 import ru.appline.tests.base.BaseTests;
 
@@ -73,8 +72,6 @@ public class RuleTest extends BaseTests {
     @Test
     public void testSumRuleTimeOut() {
         assertEquals(6, new Calculator().sum(3, 3));
-        thrownRule.expect(NoSuchElementException.class);
-
     }
 
     /**
