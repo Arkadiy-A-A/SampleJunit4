@@ -53,9 +53,9 @@ public class RuleTest extends BaseTests {
     @Test
     public void shouldTestExceptionMessage2() {
         List<String> list = new ArrayList<>();
-        ThrowingRunnable th = () -> list.get(0);
-        IndexOutOfBoundsException indexOutOfBoundsException = Assert.assertThrows(IndexOutOfBoundsException.class, th);
-        Assert.assertTrue(indexOutOfBoundsException.getMessage().contains("Index: 0, Size: 0"));
+
+        IndexOutOfBoundsException ex = Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.get(0));
+        Assert.assertTrue(ex.getMessage().contains("Index: 0, Size: 0"));
     }
 
 

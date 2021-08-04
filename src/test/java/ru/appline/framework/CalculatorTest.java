@@ -1,13 +1,16 @@
-package ru.appline.tests.calculator;
+package ru.appline.framework;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import ru.appline.framework.Calculator;
+import org.junit.runner.RunWith;
+import org.junit.runners.BlockJUnit4ClassRunner;
 import ru.appline.tests.base.BaseTests;
 
 import static org.hamcrest.CoreMatchers.*;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 public class CalculatorTest extends BaseTests {
 
@@ -15,7 +18,7 @@ public class CalculatorTest extends BaseTests {
 
     @Test
     @Ignore("Всегда прописываем комментарий почему игнорим")
-    public void testSum() throws InterruptedException {
+    void testSum() throws InterruptedException {
         System.out.println("@Test -> testSum()");
         assertEquals(5, calculator.sum(3, 3));
         assertThat(calculator.sum(3, 3), equalTo(5));
@@ -47,14 +50,7 @@ public class CalculatorTest extends BaseTests {
     @Test
     public void testMultiplication() {
         System.out.println("@Test -> testMultiplication()");
-        assertEquals("Сообщение об ошибке", 9, calculator.multiplication(3, 3));
-        assertTrue("Сообщение об ошибке", 9 == calculator.multiplication(3, 3));
-        assertFalse("Сообщение об ошибке", 9 != calculator.multiplication(3, 3));
-        assertNotEquals("Сообщение об ошибке", 9, calculator.multiplication(3, 3));
-        assertNotNull("Сообщение об ошибке", calculator);
-        assertNull("Сообщение об ошибке", calculator.multiplication(3, 3));
-        assertSame(9, calculator.multiplication(3, 3));
-        assertNotSame(9, calculator.multiplication(3, 3));
+        assertEquals(9, calculator.multiplication(3, 3));
     }
-}
 
+}

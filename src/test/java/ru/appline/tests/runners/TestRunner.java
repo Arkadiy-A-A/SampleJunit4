@@ -14,7 +14,11 @@ public class TestRunner {
      * Но такой способ требует настроки не актуально почти всегда
      */
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(CalculatorTest.class, ParameterizedCalcTest.class, RuleTest.class);
+        Result result = JUnitCore.runClasses(
+                CalculatorTest.class,
+                ParameterizedCalcTest.class,
+                RuleTest.class
+        );
 
         for (Failure failure : result.getFailures()) {
             System.out.println(failure.toString());
