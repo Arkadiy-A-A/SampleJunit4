@@ -1,25 +1,33 @@
-package ru.appline.framework;
+package ru.appline.tests.simple;
 
-import org.junit.*;
+import org.junit.FixMethodOrder;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.OrderWith;
 import org.junit.runner.RunWith;
+import org.junit.runner.manipulation.Alphanumeric;
 import org.junit.runners.BlockJUnit4ClassRunner;
+import org.junit.runners.MethodSorters;
+import org.junit.runners.Parameterized;
+import ru.appline.framework.Calculator;
 import ru.appline.tests.base.BaseTests;
 
 import static org.hamcrest.CoreMatchers.*;
-import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
-public class CalculatorTest extends BaseTests {
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class SimpleTestCase extends BaseTests {
 
     Calculator calculator = new Calculator();
 
     @Test
     @Ignore("Всегда прописываем комментарий почему игнорим")
-    public void testSum() throws InterruptedException {
+    public void testSum() {
         System.out.println("@Test -> testSum()");
         assertEquals(5, calculator.sum(3, 3));
         assertThat(calculator.sum(3, 3), equalTo(5));
+
         assertThat("hello world", anyOf(
                 is("hello world"),
                 containsString("hello")
@@ -36,7 +44,7 @@ public class CalculatorTest extends BaseTests {
     @Test
     public void testSubtraction() {
         System.out.println("@Test -> testSubtraction()");
-        assertNull(0 == calculator.substruction(3, 3));
+        assertEquals(0, calculator.substruction(3, 3));
     }
 
     @Test
@@ -48,7 +56,14 @@ public class CalculatorTest extends BaseTests {
     @Test
     public void testMultiplication() {
         System.out.println("@Test -> testMultiplication()");
-        assertEquals(9, calculator.multiplication(3, 3));
+        assertEquals("Сообщение об ошибке", 9, calculator.multiplication(3, 3));
+        assertTrue("Сообщение об ошибке", 9 == calculator.multiplication(3, 3));
+        assertFalse("Сообщение об ошибке", 9 != calculator.multiplication(3, 3));
+        assertNotEquals("Сообщение об ошибке", 9, calculator.multiplication(3, 3));
+        assertNotNull("Сообщение об ошибке", calculator);
+        assertNull("Сообщение об ошибке", calculator.multiplication(3, 3));
+        assertSame(9, calculator.multiplication(3, 3));
+        assertNotSame(9, calculator.multiplication(3, 3));
     }
-
 }
+

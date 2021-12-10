@@ -1,4 +1,4 @@
-package ru.appline.tests.calculator;
+package ru.appline.tests.simple.rule;
 
 import org.junit.Assert;
 import org.junit.Rule;
@@ -17,7 +17,7 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.Assert.assertEquals;
 
 
-public class RuleTest extends BaseTests {
+public class RuleTestCase extends BaseTests {
 
     /**
      * Правило которые можно настроить для проверки ошибки в тесте
@@ -42,7 +42,7 @@ public class RuleTest extends BaseTests {
     public void shouldTestExceptionMessage() {
         List<Object> list = new ArrayList<Object>();
         thrownRule.expect(IndexOutOfBoundsException.class);
-        thrownRule.expectMessage("Index: 0, Size: 0");
+        thrownRule.expectMessage("Index: 1, Size: 0");
         list.get(0); // execution will never get past this line
     }
 
@@ -54,7 +54,9 @@ public class RuleTest extends BaseTests {
     public void shouldTestExceptionMessage2() {
         List<String> list = new ArrayList<>();
 
-        IndexOutOfBoundsException ex = Assert.assertThrows(IndexOutOfBoundsException.class, () -> list.get(0));
+        ThrowingRunnable throwingRunnable = () -> list.get(0);
+
+        IndexOutOfBoundsException ex = Assert.assertThrows(IndexOutOfBoundsException.class, throwingRunnable);
         Assert.assertTrue(ex.getMessage().contains("Index: 0, Size: 0"));
     }
 
@@ -77,7 +79,7 @@ public class RuleTest extends BaseTests {
     /**
      * Ограничение по времени лучший способ для Junit4
      */
-    @Test(timeout = 5000)
+    @Test(timeout = 5000, expected = ArithmeticException.class)
     public void testSumTestTimeOut() {
         assertEquals(6, new Calculator().sum(3, 3));
     }

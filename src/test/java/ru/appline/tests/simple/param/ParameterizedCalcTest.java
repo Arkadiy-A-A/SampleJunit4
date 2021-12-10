@@ -1,4 +1,4 @@
-package ru.appline.tests.parametrized;
+package ru.appline.tests.simple.param;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -38,6 +38,4 @@ public class ParameterizedCalcTest {
         System.out.println("Праметры:\na = " + a + "\nb = " + b + "\nc = " + c+"\n");
         assertEquals(c, new Calculator().multiplication(a, b));
     }
-
-
 }

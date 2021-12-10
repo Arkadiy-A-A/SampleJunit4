@@ -12,6 +12,11 @@ public class Calculator {
     }
 
     public int division(int a, int b){
+        try {
+            Thread.sleep(1200);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return a / b;
     }
 

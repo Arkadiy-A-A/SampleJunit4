@@ -3,9 +3,9 @@ package ru.appline.tests.runners;
 import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
-import ru.appline.tests.calculator.CalculatorTest;
-import ru.appline.tests.parametrized.ParameterizedCalcTest;
-import ru.appline.tests.calculator.RuleTest;
+import ru.appline.tests.simple.SimpleTestCase;
+import ru.appline.tests.simple.param.ParameterizedCalcTest;
+import ru.appline.tests.simple.rule.RuleTestCase;
 
 public class TestRunner {
 
@@ -15,9 +15,9 @@ public class TestRunner {
      */
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(
-                CalculatorTest.class,
+                SimpleTestCase.class,
                 ParameterizedCalcTest.class,
-                RuleTest.class
+                RuleTestCase.class
         );
 
         for (Failure failure : result.getFailures()) {
